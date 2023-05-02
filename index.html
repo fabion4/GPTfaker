@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GPTFaker</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #f0f0f0;
+        }
+        .chat-container {
+            margin-top: 50px;
+            border-radius: 10px;
+            border: 1px solid #aaa;
+            height: 500px;
+            overflow-y: scroll;
+            padding: 10px;
+            background-color: #fff;
+        }
+        .prompt {
+            display: inline-flex;
+            align-items: center;
+            font-weight: normal;
+        }
+        .prompt:before {
+            content: 'U';
+            width: 1.5em;
+            height: 1.5em;
+            background-color: #b31664;
+            border-radius: 0.25em;
+            margin-right: 0.5em;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: normal;
+            color: #fff;
+            font-size: 1.2em;
+        }
+        .answer {
+            display: inline-flex;
+            align-items: center;
+            font-weight: bold;
+            background-color: #f2f2f2;
+            padding: 0.5em;
+            border-radius: 0.5em;
+            }
+        .answer:before {
+            content: '';
+            width: 1.5em;
+            height: 1.5em;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/120px-ChatGPT_logo.svg.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin-right: 0.5em;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .input-container {
+            margin-top: 10px;
+        }
+        .send-btn {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="https://i.ibb.co/0cBZGWC/Chat-GPT.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            GPTFaker
+        </a>
+    </nav>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="chat-container">
+                    <div class="prompt">Welcome to GPTFaker. Type in a prompt and an answer below to create a ChatGPT-like conversation.</div>
+                </div>
+                <div class="input-container">
+                    <input type="text" class="form-control prompt-input" placeholder="Type in a prompt">
+                    <input type="text" class="form-control answer-input" placeholder="Type in an answer">
+                    <button class="btn btn-primary send-btn">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $(".send-btn").click(function() {
+                var prompt = $(".prompt-input").val();
+                var answer = $(".answer-input").val();
+                $(".chat-container").append('<div class="prompt">' + prompt + "\n\n" +'</div>');
+                $(".chat-container").append('<div class="answer">' + answer + "\n\n" +'</div>');
+                $(".prompt-input").val("");
+                $(".answer-input").val("");
+                $(".chat-container").scrollTop($(".chat-container")[0].scrollHeight);
+            });
+        });
+    </script>
+</body>
+</html>
